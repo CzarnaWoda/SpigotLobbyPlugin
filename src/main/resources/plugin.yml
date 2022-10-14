@@ -1,0 +1,6 @@
+main: pl.blackwater.spigotlobby.Main
+version: 1.0
+name: LobbyPlugin
+api-version: 1.16
+depend:
+  - SpigotPlugin
