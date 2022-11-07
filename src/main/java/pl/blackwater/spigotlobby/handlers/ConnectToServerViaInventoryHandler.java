@@ -2,6 +2,7 @@ package pl.blackwater.spigotlobby.handlers;
 
 import lombok.RequiredArgsConstructor;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import pl.blackwater.spigotlobby.data.SpigotServer;
@@ -20,7 +21,7 @@ public class ConnectToServerViaInventoryHandler implements IAction {
     private final SpigotServer server;
 
     @Override
-    public void execute(Player player, Inventory inventory, int i, ItemStack itemStack) {
+    public void execute(Player player, Inventory inventory, int i, ItemStack itemStack, ClickType type) {
         if(System.currentTimeMillis() - instance.getLastUpdate() <= 3500L){
             player.closeInventory();
 
