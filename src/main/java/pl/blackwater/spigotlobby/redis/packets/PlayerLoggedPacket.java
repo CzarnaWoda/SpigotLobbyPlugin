@@ -2,14 +2,18 @@ package pl.blackwater.spigotlobby.redis.packets;
 
 import lombok.RequiredArgsConstructor;
 import org.bukkit.Bukkit;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitTask;
 import pl.blackwater.spigotlobby.Main;
+import pl.blackwater.spigotlobby.bossbar.BossBarStorage;
 import pl.blackwater.spigotlobby.data.SpigotUser;
 import pl.blackwater.spigotplugin.packets.RedisPacket;
 import pl.blackwater.spigotplugin.packets.handler.PacketHandler;
 import pl.blackwater.spigotplugin.spigot.CustomItemStorage;
+import pl.blackwater.spigotplugin.util.ChatUtil;
 
 import java.util.UUID;
 
@@ -35,7 +39,12 @@ public class PlayerLoggedPacket extends RedisPacket {
                         spigotUser.setLogged(true);
                         //TODO not update necessary
                     }
+                    final BossBar bossBar = BossBarStorage.BOSS_BARS.get(player);
 
+                    if(bossBar != null){
+                        bossBar.setTitle(ChatUtil.fixColor("&aWYBIERZ SERWER ZA POMOCA KOMPASU !"));
+                        bossBar.setColor(BarColor.GREEN);
+                    }
                 }
             }
         },80L);
